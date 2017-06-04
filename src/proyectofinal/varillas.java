@@ -13,21 +13,39 @@ import java.util.Scanner;
  */
 public class varillas {
 
-	public static void main(String[] args) {
-		
-		int varilla;
-		
-		Scanner datos = new Scanner(System.in);
-		
-		System.out.print("Ingrese tamaño de la varilla: ");
-		varilla = datos.nextInt();
-		
-		System.out.print("Ingrese cantidad de datos: ");
-		int cantidad = datos.nextInt();
+     private int varilla;
+     private int cantidad ;
+
+    public varillas(int varilla, int cantidad) {
+        this.varilla = varilla;
+        this.cantidad = cantidad;
+       
+    }
+
+    public int getVarilla() {
+        return varilla;
+    }
+
+    public void setVarilla(int varilla) {
+        this.varilla = varilla;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
+    		
+    public int [][] dinamica () {
+
+        
 		int[] longitudes = new int[cantidad];
 		int[] precios = new int[cantidad];
 		
-		
+		Scanner datos = new Scanner(System.in);	
 		
 		for (int i = 0; i < cantidad; i++)
 	    {
@@ -53,34 +71,49 @@ public class varillas {
 	    	matriz_resultados[i][0] = 1;   
 	    }
 	    
-	    for(int j = 1; j < longitudes.length ; j++){
+	    for(int f = 1; f < longitudes.length ; f++){
 	    	for(int c = 1; c < varilla; c++){
-	    		if(c <  longitudes[j-1] ){
-	    			matriz_resultados[j][c] = matriz_resultados[j-1][c]; 
-	    		}else{
-	    			if(matriz_resultados[j-1][c] > matriz_resultados[j-1][c-longitudes[j-1]]+ precios[j-1]){
-	    				matriz_resultados[j][c] = matriz_resultados[j-1][c];
-	    			}else{
-	    				matriz_resultados[j][c] = matriz_resultados[j-1][c-longitudes[j-1]]+precios[j-1];
-	    			}
-	    		}
+                    
+                    
+                    if ( c < matriz_resultados [c][f-1] ){
+                        matriz_resultados[f][c] =  matriz_resultados[c][f-1];
+                    }
+                    
+                    else if ( c == f ){
+                        matriz_resultados[f][c] = precios[c];
+                        
+                    }else if(c > matriz_resultados [c][f] ){
+                        matriz_resultados[f][c] = matriz_resultados[c-1][f]+1;                     
+                   
+                                    
+                                            }else if(c > matriz_resultados [c][f] ){
+                                                matriz_resultados[f][c] = matriz_resultados[c-1][f]+1;                     
+                                        }
+                    
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+//                            (c <  longitudes[j-1] ){
+//	    			matriz_resultados[j][c] = matriz_resultados[j-1][c]; 
+//	    		}else{
+//	    			if(matriz_resultados[j-1][c] > matriz_resultados[j-1][c-longitudes[j-1]]+ precios[j-1]){
+//	    				matriz_resultados[j][c] = matriz_resultados[j-1][c];
+//	    			}else{
+//	    				matriz_resultados[j][c] = matriz_resultados[j-1][c-longitudes[j-1]]+precios[j-1];
+//	    			}
+//	    		}
 	    		//System.out.println(matriz_resultados[j][c]);
 	    	}
 	    }
            
-        for (int i = 0; i < matriz_resultados.length; i++)
-	    {
-        	if(i<=varilla){
-	        	for (int j = 0; j < matriz_resultados.length; j++)
-	    	    {
-	        		if(i==varilla && j==varilla){
-	        			System.out.println();
-	        			System.out.println("El precio maximo de una de las varillas es : "+matriz_resultados[j*j][i]);
-	        		}
-	        		
-	    	    }
-	    	}
-	    }
+        
         
         int i, j ; 
                        
@@ -93,8 +126,27 @@ public class varillas {
                    
                     }
                System.out.println("|");
-                }                           
+                }
+           
+           
+           for (int l = 0; l <= matriz_resultados.length; l++)
+	    {
+        	if(l<=varilla){
+	        	for (int m = 0; m <=matriz_resultados.length; m++)
+	    	    {
+	        		if(l==varilla && m==varilla){
+	        			System.out.println();
+	        			System.out.println("El precio maximo de una de las varillas es : "+matriz_resultados[m-1][l-1]);
+	        		
+	        		
+	    	    }
+	    	}
+	    }
+           
             }
-        
+           
+         return matriz_resultados;
+            }
+
         
      }

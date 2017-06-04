@@ -79,20 +79,20 @@ public class DividirVencer {
      
 ////************* OPERACION DE LA FUNCION POLINOMICA PARA SACAR LA BISECCION***********************////       
         
-
+        int veces = 0 ;
         int nveces ;
         System.out.println("cuantas veces necesita ver la biseccion?");
         nveces = leer.nextInt();
-
         double fA = a ;
         double fB = b ;
-        int veces = 0 ;
+        
         double pA = cantCoeficientes;
         double pB = cantCoeficientes;
         
         while ( nveces != veces ) {
             
-            double acumA = 0;       
+            double acumA = 0; 
+            
             for ( int n = 0; n <= fA ; n++ ){
                 acumA = coeficientesA[n] * Math.pow(a,pA)+acumA;
                 pA--;
@@ -117,15 +117,15 @@ public class DividirVencer {
 
             if( acumA > 0 && c > 0 ) {
 
-                pB = c ;
+                b = c ;
 
             }
             else {
-                pA = c ;
+                a = c ;
             }
 
             veces++;
-        
+            
         }
         return coeficientes;    
     }
