@@ -60,34 +60,38 @@ public class varillas {
 	    }
 		
 		//Creamos la matriz de devoluciones
-	    int[][]  matriz_resultados = new int[longitudes.length][cantidad];
+	    int[][]  matriz_resultados = new int[cantidad][varilla];
 
 	    //Rellenamos la 1ª fila de longitudes de varilla
-	    for(int i = 0; i < varilla; i++){
-	    	matriz_resultados[0][i] = i+1; 
+	    for(int a = 0; a < varilla; a++){
+                int uno= 1;
+	    	matriz_resultados[0][a] = a+uno; 
 	    }
 	    //Rellenamos la 1ª columna de unos
-	    for(int i = 0; i < longitudes.length; i++){
-	    	matriz_resultados[i][0] = 1;   
+	    for(int b = 0; b < cantidad; b++){
+	    	matriz_resultados[b][0] = 1;   
 	    }
 	    
 	    for(int f = 1; f < longitudes.length ; f++){
 	    	for(int c = 1; c < varilla; c++){
                     
-                    if(c > matriz_resultados [c][f] ){
-                        matriz_resultados[f][c] = matriz_resultados[c-1][f]+1; 
-                    }    
-                    if ( c < matriz_resultados [c][f-1] ){
-                        matriz_resultados[f][c] =  matriz_resultados[c][f-1];
+                    if ( c < f){
+                        matriz_resultados[f][c] =  matriz_resultados[f-1][c];    
+                    }
+                    if ( c > f ){
+                        matriz_resultados[f][c] =  matriz_resultados[f][c-1]+1;
                     }                    
                     if ( c == f ){
                         matriz_resultados[f][c] = precios[c];
                         
-                    }                    
-                   
-                    else if(c > matriz_resultados [c][f] ){
-                         matriz_resultados[f][c] = matriz_resultados[c-1][f]+1;                     
                     }
+//                    if(c-1 == f && c > matriz_resultados [f][c]){
+//                        matriz_resultados[f][c] = matriz_resultados[c-1][f]+precios[c]; 
+//                    }                     
+//                   
+//                    else if(c > matriz_resultados [c][f] ){
+//                         matriz_resultados[f][c] = matriz_resultados[c-1][f]+1;                     
+//                    }
                     
 
                 
