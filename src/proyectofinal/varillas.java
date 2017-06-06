@@ -85,16 +85,19 @@ public class varillas {
                         
                     }                    
                    
-//                    else if(c > matriz_resultados [c][f] ){
-//                         matriz_resultados[f][c] = matriz_resultados[c-1][f]+1;                     
-//                    }
+                    else if(c > matriz_resultados [c][f] ){
+                         matriz_resultados[f][c] = matriz_resultados[c-1][f]+1;                     
+                    }
+                    
 
-	    	
-	    
-           
-                }
-        
-        int i, j ; 
+                
+            }      
+        } 
+            
+            
+           //** IMPRIME LA MATRIZ DE RESULTADOS 
+            
+           int i, j ; 
                        
            for (i=0;i < matriz_resultados.length; i ++ ){
                 System.out.print("|");
@@ -106,9 +109,8 @@ public class varillas {
                     }
                System.out.println("|");
                 }
-           
-           
-           for (int l = 0; l <= matriz_resultados.length; l++)
+            
+            for (int l = 0; l <= matriz_resultados.length; l++)
 	    {
         	if(l<=varilla){
 	        	for (int m = 0; m <=matriz_resultados.length; m++)
@@ -123,13 +125,10 @@ public class varillas {
 	    }
            
             }
-           
-        
             
-
-        
-        }  
+            
+            
              return matriz_resultados;
 }
-}
+    }
 
