@@ -62,11 +62,11 @@ public class varillas {
 		//Creamos la matriz de devoluciones
 	    int[][]  matriz_resultados = new int[longitudes.length][cantidad];
 
-	    //Rellenamos la 1ª fila de ceros
+	    //Rellenamos la 1ª fila de longitudes de varilla
 	    for(int i = 0; i < varilla; i++){
 	    	matriz_resultados[0][i] = i+1; 
 	    }
-	    //Rellenamos la 1ª columna de ceros
+	    //Rellenamos la 1ª columna de unos
 	    for(int i = 0; i < longitudes.length; i++){
 	    	matriz_resultados[i][0] = 1;   
 	    }
@@ -74,46 +74,25 @@ public class varillas {
 	    for(int f = 1; f < longitudes.length ; f++){
 	    	for(int c = 1; c < varilla; c++){
                     
-                    
+                    if(c > matriz_resultados [c][f] ){
+                        matriz_resultados[f][c] = matriz_resultados[c-1][f]+1; 
+                    }    
                     if ( c < matriz_resultados [c][f-1] ){
                         matriz_resultados[f][c] =  matriz_resultados[c][f-1];
-                    }
-                    
-                    else if ( c == f ){
+                    }                    
+                    if ( c == f ){
                         matriz_resultados[f][c] = precios[c];
                         
-                    }else if(c > matriz_resultados [c][f] ){
-                        matriz_resultados[f][c] = matriz_resultados[c-1][f]+1;                     
+                    }                    
                    
-                                    
-                                            }else if(c > matriz_resultados [c][f] ){
-                                                matriz_resultados[f][c] = matriz_resultados[c-1][f]+1;                     
-                                        }
-                    
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-//                            (c <  longitudes[j-1] ){
-//	    			matriz_resultados[j][c] = matriz_resultados[j-1][c]; 
-//	    		}else{
-//	    			if(matriz_resultados[j-1][c] > matriz_resultados[j-1][c-longitudes[j-1]]+ precios[j-1]){
-//	    				matriz_resultados[j][c] = matriz_resultados[j-1][c];
-//	    			}else{
-//	    				matriz_resultados[j][c] = matriz_resultados[j-1][c-longitudes[j-1]]+precios[j-1];
-//	    			}
-//	    		}
-	    		//System.out.println(matriz_resultados[j][c]);
-	    	}
-	    }
+//                    else if(c > matriz_resultados [c][f] ){
+//                         matriz_resultados[f][c] = matriz_resultados[c-1][f]+1;                     
+//                    }
+
+	    	
+	    
            
-        
+                }
         
         int i, j ; 
                        
@@ -136,7 +115,7 @@ public class varillas {
 	    	    {
 	        		if(l==varilla && m==varilla){
 	        			System.out.println();
-	        			System.out.println("El precio maximo de una de las varillas es : "+matriz_resultados[m-1][l-1]);
+	        			System.out.println("El precio maximo de una de las varillas es : "+matriz_resultados[m-1][l-1]+" de un largo "+ l +" y un corte " + m);
 	        		
 	        		
 	    	    }
@@ -145,8 +124,12 @@ public class varillas {
            
             }
            
-         return matriz_resultados;
-            }
+        
+            
 
         
-     }
+        }  
+             return matriz_resultados;
+}
+}
+
